@@ -10,12 +10,34 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   mode: mode,
   target: target,
+
+  // images in disc goes to /images folder
+  output: {
+    assetModuleFilename: 'images/[hash][ext][query]',
+  },
+
   module: {
     rules: [
       {
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        type: 'asset',
+        // 'asset/inline' to small img
+        // 'asset' will determine which base on img size
+        // 'asset/resource', will throw files to folder (ex. /img)
+        // parser: {
+        //   dataUrlCondition: {
+        //     maxSize: 30 * 1024,
+        //   },
+        // },
+      },
+
+      {
         test: /\.s?css$/i,
         use: [
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { publicPath: '' },
+          },
           'css-loader',
           'postcss-loader',
           'sass-loader',
