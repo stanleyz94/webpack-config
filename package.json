@@ -9,7 +9,9 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.13.13",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "css-loader": "^5.2.1",
+    "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.4.1",
     "postcss": "^8.2.10",
     "postcss-loader": "^5.2.0",
